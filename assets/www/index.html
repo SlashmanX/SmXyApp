@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>SmXy App</title>
+<script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
+<link rel="stylesheet"href="jquery.mobile-1.0b1.min.css" /> 
+<script src="jquery-1.6.2.min.js"></script> 
+<script type = "text/javascript">
+$(document).bind("mobileinit", (function(){
+    // JSON url
+   // var url="http://slashmanx.com/admin/android/getPosts.php";
+    //var postsArray = [];
+    
+    // get the json file
+ 	//$.getJSON(url,function(json){
+	    // this is where we can loop through the results in the json object
+	  //  $.each(json.blogposts, function(i,posts){
+	     // this is where we do what we want with the tweet
+	     alert ("Hello");
+	     //postsArray.push = posts.blogpost;
+		//});
+	//});
+});
+
+</script>
+<script src="config.global.jquery.js"></script> 
+<script src="jquery.mobile-1.0b1.min.js"></script>
+</head>
+<body>
+<!-- Start of first page -->
+<div data-role="page" id="home" style="-webkit-backface-visibility: hidden">
+
+	<div data-role="header">
+		<h1>Blog Posts</h1>
+		<a id="buttonAddBlogPost" data-icon="plus" class="ui-btn-left" href="add.html" data-iconpos="notext" data-role="button" data-inline="true">New</a> 
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<p>Hello</p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /header -->
+</div><!-- /page -->
+
+<div data-role="page" id="edit" style="-webkit-backface-visibility: hidden">
+
+	<div data-role="header" data-nobackbtn="false">
+		<h1>Edit Post</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p>Editing Post</p>		
+		<p><a href="#home">Back Home</a></p>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /header -->
+</div><!-- /page -->
+
+</body>
+
+</html>
