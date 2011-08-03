@@ -7,8 +7,10 @@
 <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
 <link rel="stylesheet"href="jquery.mobile-1.0b1.min.css" /> 
 <script src="jquery-1.6.2.min.js"></script> 
+<script src="config.global.jquery.js"></script> 
 <script type = "text/javascript">
-$(document).bind("mobileinit", function() {
+$(document).ready (function() {
+
     // JSON url
     var url="http://slashmanx.com/admin/android/getPosts.php";
     var postsArray = [];
@@ -19,14 +21,24 @@ $(document).bind("mobileinit", function() {
 	    $.each(json.blogposts, function(i,posts){
 	     // this is where we do what we want with the tweet
 	     	postsArray.push = posts.blogpost;
-	     	$("#listBlogPosts").append("<li>"+ posts.blogpost.title +"</li>");
+	     	var newList = "<li data-theme='c' class='ui-btn ui-btn-icon-right ui-li ui-btn-up-c' id='post-"+ posts.blogpost.id+"'>";
+	     	newList+="<div class='ui-btn-inner ui-li'>";
+			newList+="<div class='ui-btn-text'>";
+			newList+="<a href='index.html' class='ui-link-inherit'>";
+			//newList+="<p class='ui-li-aside ui-li-desc'><strong>"+ posts.blogpost.date_posted+"</strong></p>";
+			newList+="<h3 class='ui-li-heading'>"+ posts.blogpost.title +"</h3>";
+			newList+="<p class='ui-li-desc'>"+ posts.blogpost.date_posted+"</p>";
+			newList+="</a>";
+			newList+="</div>";
+			newList+="<span class='ui-icon ui-icon-arrow-r'/>";
+			newList+="</div>";
+			newList+="</li>";
+	     	$("#listBlogPosts").append(newList);
 	     	$("#listBlogPosts").listview("refresh");
 		});
 	});
 });
-
 </script>
-<script src="config.global.jquery.js"></script> 
 <script src="jquery.mobile-1.0b1.min.js"></script>
 </head>
 <body>
