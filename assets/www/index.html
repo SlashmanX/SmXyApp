@@ -6,20 +6,19 @@
 <link rel="stylesheet"href="jquery.mobile-1.0b1.min.css" /> 
 <script src="jquery-1.6.2.min.js"></script> 
 <script type = "text/javascript">
-$(document).bind("mobileinit", (function(){
+$(document).ready(function(){
     // JSON url
-   // var url="http://slashmanx.com/admin/android/getPosts.php";
-    //var postsArray = [];
+    var url="http://slashmanx.com/admin/android/getPosts.php";
+    var postsArray = [];
     
     // get the json file
- 	//$.getJSON(url,function(json){
+ 	$.getJSON(url,function(json){
 	    // this is where we can loop through the results in the json object
-	  //  $.each(json.blogposts, function(i,posts){
+	    $.each(json.blogposts, function(i,posts){
 	     // this is where we do what we want with the tweet
-	     alert ("Hello");
-	     //postsArray.push = posts.blogpost;
-		//});
-	//});
+	     	postsArray.push = posts.blogpost;
+		});
+	});
 });
 
 </script>
