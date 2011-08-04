@@ -8,10 +8,11 @@ $(document).bind("mobileinit", function() {
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	//window.plugins.statusBarNotification.notify("Put your title here", "Put your message here");
+	window.plugins.statusBarNotification.notify("Put your title here", "Put your message here");
     // JSON url
     var url="http://slashmanx.com/admin/android/getPosts.php";
 	    var postsArray = [];
+	    
 	    
 	    // get the json file
 	 	$.getJSON(url,function(json){
