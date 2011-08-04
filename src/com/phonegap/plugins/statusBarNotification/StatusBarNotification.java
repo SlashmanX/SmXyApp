@@ -25,7 +25,7 @@
 *
 */
 
-package com.phonegap.plugins.statusBarNotification;
+package com.phonegap.plugins.statusBarNotification.StatusBarNotification;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,9 +40,8 @@ import android.util.Log;
 import com.phonegap.api.Plugin;
 import com.phonegap.api.PluginResult;
 import com.phonegap.api.PluginResult.Status;
-import com.slashmanx.smxyApp.R; 
 
-public class StatusBarNotification extends Plugin {
+public class StatusBarNotificationPlugin extends Plugin {
 	//	Action to execute
 	public static final String ACTION="notify";
 	
