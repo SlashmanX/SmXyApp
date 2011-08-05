@@ -5,6 +5,9 @@
 
 <title>SmXy App</title>
 <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="statusbarnotification.js"></script>
+
+
 <link rel="stylesheet"href="jquery.mobile-1.0b1.min.css" /> 
 <script src="jquery-1.6.2.min.js"></script>
 <script src="config.global.jquery.js"></script>
@@ -15,11 +18,11 @@
 <div data-role="page" id="home" style="-webkit-backface-visibility: hidden">
 
 	<div data-role="header">
-		<h1>Blog Posts</h1>
-		<a id="buttonAddBlogPost" data-icon="plus" class="ui-btn-left" href="add.html" data-iconpos="notext" data-role="button" data-inline="true">New</a> 
+		<h1>SmXy App</h1>
+		<a id="buttonAddBlogPost" data-icon="plus" class="ui-btn-left" href="#add" data-iconpos="notext" data-role="button" data-inline="true">New</a> 
 	</div><!-- /header -->
 
-	<div data-role="content">
+	<div id = "blogposts" data-role="content">
 		<ul data-role="listview" class="ui-listview" id = "listBlogPosts">
 			<div class="spinner">
 				<img src="images/ajax-loader.gif"/>
