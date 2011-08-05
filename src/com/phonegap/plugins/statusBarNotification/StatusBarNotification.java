@@ -93,6 +93,10 @@ public class StatusBarNotification extends Plugin {
         long when = System.currentTimeMillis();
         
         Notification notification = new Notification(icon, contentTitle, when);
+        
+        long[] vibrate = {0,100,200,300};
+        notification.vibrate=vibrate;
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
 		Intent notificationIntent = new Intent(ctx, ctx.getClass());
         PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0, notificationIntent, 0);
