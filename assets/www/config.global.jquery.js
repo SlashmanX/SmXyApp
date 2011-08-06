@@ -27,6 +27,8 @@ function onDeviceReady() {
 		addToList();
 	}
 	$("#listBlogPosts").listview("refresh");
+	$('#buttonRefreshList').die();
+	$('div[id="blogposts"] ul[data-role="listview"] a').die();
 		
 		$('div[id="blogposts"] ul[data-role="listview"] a').live("vclick", function() {  
     		window.plugins.statusBarNotification.notify("Put your title here", "Put your message here"); 
@@ -61,15 +63,24 @@ function onDeviceReady() {
             });
             
             $('#buttonRefreshList').live("vclick", function() {
+            	alert ("Refresh Called");
+            	if(navigator.network.connection.type == Connection.NONE){
+					alert ("No internet conection!");
+					return false;
+				}
                	window.localStorage['postsStorage'] = "";
             	window.postsArray = [];
-            	$("#listBlogPosts").children().remove('li');
-            	//$("#listBlogPosts").listview("refresh");
+            	$("div[id='blogposts'] ul[data-role='listview'] li").remove();
+            	$("#listBlogPosts").listview("refresh");
             	window.onDeviceReady();
             });      	
 }
 
 function getPosts() {
+	if(navigator.network.connection.type == Connection.NONE){
+		alert ("No internet conection!");
+		return false;
+	}
 	$.getJSON(url,function(json){
 		$.each(json.blogposts, function(i,posts){
 		     	window.postsArray.push(posts.blogpost);
