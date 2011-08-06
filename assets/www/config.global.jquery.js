@@ -22,7 +22,13 @@ function onDeviceReady() {
     	alert ("Empty Array");
 		getPosts();
 	}
-	addToList();
+	
+	if($("#listBlogPosts > li").size() == 0)
+	{
+		addToList();
+	}
+	$("#listBlogPosts").listview("refresh");
+		
 		$('div[id="blogposts"] ul[data-role="listview"] a').live("vclick", function() {  
     		window.plugins.statusBarNotification.notify("Put your title here", "Put your message here"); 
 		}); 
@@ -48,6 +54,11 @@ function onDeviceReady() {
 				
 				window.plugins.SmXyAddArticlePlugin.add_post(values['title_r'], values['tags_r'],values['article_r'], posturl);
 				return false;
+            });
+            
+            $("#addCancel").click(function(){
+            
+            	history.back(); return false;
             });
 }
 
@@ -88,7 +99,6 @@ function addToList(){
             newList+="</div>";
             newList+="</li>";
             $("#listBlogPosts").append(newList);
-            $("#listBlogPosts").listview("refresh");
 		}
 		$(".spinner").hide(); 
 	}
