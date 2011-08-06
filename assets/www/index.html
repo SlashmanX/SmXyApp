@@ -6,7 +6,7 @@
 <title>SmXy App</title>
 <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
 <script type="text/javascript" charset="utf-8" src="statusbarnotification.js"></script>
-
+<script type="text/javascript" charset="utf-8" src="smxy.addArticle.js"></script>
 
 <link rel="stylesheet"href="jquery.mobile-1.0b1.min.css" /> 
 <script src="jquery-1.6.2.min.js"></script>
@@ -20,7 +20,8 @@
 
 	<div data-role="header">
 		<h1>SmXy App</h1>
-		<a id="buttonAddBlogPost" data-icon="plus" class="ui-btn-left" href="#add" data-iconpos="notext" data-role="button" data-inline="true">New</a> 
+		<a id="buttonAddBlogPost" data-icon="plus" class="ui-btn-right" href="#add" data-iconpos="notext" data-role="button" data-inline="true">New</a> 
+		<!-- <a id="buttonRefreshList" data-icon="plus" class="ui-btn-right" data-iconpos="notext" data-role="button" data-inline="true">Refresh</a> -->
 	</div><!-- /header -->
 
 	<div id = "blogposts" data-role="content">
@@ -45,6 +46,47 @@
 	<div data-role="content">	
 		<p>Editing Post</p>		
 		<p><a href="#home">Back Home</a></p>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /header -->
+</div><!-- /page -->
+
+<div data-role="page" id="add" style="-webkit-backface-visibility: hidden">
+
+	<div data-role="header" data-nobackbtn = "true" data-add-back-btn="false">
+		<h1>Add Blog Post</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	<form id="addBlogPostForm">
+		<div id="titleDiv" data-role="fieldcontain">  
+	  		<label for="title">Title</label>  
+	  		<input id="title" name="title_r" type="text" />  
+		</div>  
+		
+		<div id="tagsDiv" data-role="fieldcontain">  
+	  		<label for="tags">Tags</label>  
+	  		<input id="tags" name="tags_r" type="text" />  
+		</div>
+		
+		<div id="slugDiv" data-role="fieldcontain">  
+	  		<label for="slug">Slug</label>  
+	  		<input id="slug" name="slug_r" type="text" />  
+		</div>
+		
+		<div id="articleDiv" data-role="fieldcontain">  
+	  		<label for="article">Post</label>  
+	  		<textarea id="article" name="article_r"></textarea>
+		</div>
+		
+		<fieldset>
+ 			<div><button type="submit" data-theme="c" id = "addCancel">Cancel</button></div>
+ 			<div><button type="submit" data-theme="b" id ="addSubmit">Submit</button></div>
+		</fieldset>
+		<div id = "notification"></div>
+	</form>		
 	</div><!-- /content -->
 
 	<div data-role="footer">

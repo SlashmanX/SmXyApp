@@ -6,6 +6,7 @@ $(document).bind("mobileinit", function() {
 var ready = true;
     // JSON url
 var url="http://slashmanx.com/admin/android/getPosts.php";
+var posturl="http://slashmanx.com/admin/android/post.php";
 postsArray = (JSON.parse(window.localStorage['postsStorage']));
 if(postsArray==null)
 {
@@ -25,6 +26,29 @@ function onDeviceReady() {
 		$('div[id="blogposts"] ul[data-role="listview"] a').live("vclick", function() {  
     		window.plugins.statusBarNotification.notify("Put your title here", "Put your message here"); 
 		}); 
+		
+        function onSuccess(data, status)
+        {
+            data = $.trim(data);
+            $("#notification").text(data);
+        }
+ 
+        function onError(data, status)
+        {
+            data = $.trim(data);
+            $("#notification").text("Error: "+status);
+        } 
+        
+            $("#addSubmit").click(function(){
+ 
+               var values = {};
+				$.each($('#addBlogPostForm').serializeArray(), function(i, field) {
+    				values[field.name] = field.value;
+				});
+				
+				window.plugins.SmXyAddArticlePlugin.add_post(values['title_r'], values['tags_r'],values['article_r'], posturl);
+				return false;
+            });
 }
 
 function getPosts() {
@@ -66,7 +90,6 @@ function addToList(){
             $("#listBlogPosts").append(newList);
             $("#listBlogPosts").listview("refresh");
 		}
-		
 		$(".spinner").hide(); 
 	}
 }

@@ -37,6 +37,7 @@ var NotificationMessenger = function() {
  * @param body Body of the notification
  */
 NotificationMessenger.prototype.notify = function(title, body) {
+    alert ("Hello");
     return PhoneGap.exec(null, null, 'StatusBarNotification',	'notify', [title, body]);
 };
 
