@@ -7,7 +7,7 @@ var ready = true;
     // JSON url
 var url="http://slashmanx.com/admin/android/getPosts.php";
 var posturl="http://slashmanx.com/admin/android/post.php";
-postsArray = (JSON.parse(window.localStorage['postsStorage']));
+postsArray = (window.localStorage['postsStorage'] == null ? JSON.parse(window.localStorage['postsStorage']) : null)
 if(postsArray==null)
 {
    	var postsArray = [];
@@ -19,7 +19,6 @@ function onDeviceReady() {
 	$(".spinner").show();
     if(window.postsArray.length==0){
     	window.ready = false;
-    	alert ("Empty Array");
 		getPosts();
 	}
 	
@@ -60,6 +59,14 @@ function onDeviceReady() {
             
             	history.back(); return false;
             });
+            
+            $('#buttonRefreshList').live("vclick", function() {
+               	window.localStorage['postsStorage'] = "";
+            	window.postsArray = [];
+            	$("#listBlogPosts").children().remove('li');
+            	//$("#listBlogPosts").listview("refresh");
+            	window.onDeviceReady();
+            });      	
 }
 
 function getPosts() {
