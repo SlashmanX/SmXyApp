@@ -33,8 +33,7 @@ public class SmXyAddArticlePlugin extends Plugin {
 				String article = data.getString(2);
 				String url = data.getString(3);
 				
-				sendArticle(title, tags,article,url);
-				result = new PluginResult(Status.OK);
+				result = sendArticle(title, tags,article,url);
 			} catch (JSONException jsonEx) {
 				Log.d("SmXyAddArticlePlugin", "Got JSON Exception "
 						+ jsonEx.getMessage());
@@ -47,8 +46,10 @@ public class SmXyAddArticlePlugin extends Plugin {
 		return result;
 	}
 	
-	public void sendArticle(String title, String tags, String article, String url) 
-    {              
+	public PluginResult sendArticle(String title, String tags, String article, String url) 
+    {            
+		PluginResult result = null;
+		String resultString ="";
     	Map<String, String> kvPairs = new HashMap<String, String>();
  
     	kvPairs.put("title",title);
@@ -61,20 +62,33 @@ public class SmXyAddArticlePlugin extends Plugin {
  
         		HttpResponse re = HTTP_Request.doPost(url, kvPairs);
         		
-        		String result = EntityUtils.toString(re.getEntity());
- 
+        		resultString = EntityUtils.toString(re.getEntity());
+        		
+        		Log.d("SMXYYYYYYYYYYYYYYY", resultString)
+; 
         	} catch (ClientProtocolException e) {
  
         		Log.d("SMXY", "CPE");
+        		result = new PluginResult(Status.NO_RESULT);
  
             } catch (IOException e) {
  
             	Log.d("SMXY", "IOE");
+            	result = new PluginResult(Status.IO_EXCEPTION);
  
                 // Do something
  
             }
+            
+            if(resultString.equals("OK"))
+            {
+            	result = new PluginResult(Status.OK);
+            	Log.d("SMXYYYYYYYYYYYYYYYYYY", "Setting as OK");
+            	
+            }
+            
+            return result;
  
-        }
+     }
 
 }

@@ -7,7 +7,7 @@ var ready = true;
     // JSON url
 var url="http://slashmanx.com/admin/android/getPosts.php";
 var posturl="http://slashmanx.com/admin/android/post.php";
-postsArray = (window.localStorage['postsStorage'] === null ? JSON.parse(window.localStorage['postsStorage']) : null)
+postsArray = (window.localStorage['postsStorage'] != null ? JSON.parse(window.localStorage['postsStorage']) : null)
 if(postsArray==null)
 {
    	var postsArray = [];
@@ -36,14 +36,12 @@ function onDeviceReady() {
 		
         function onSuccess(data, status)
         {
-            data = $.trim(data);
-            $("#notification").text(data);
+            $("#notification").text("Article Added Successfully");
         }
  
         function onError(data, status)
         {
-            data = $.trim(data);
-            $("#notification").text("Error: "+status);
+            $("#notification").text("Error");
         } 
         
             $("#addSubmit").click(function(){
@@ -53,7 +51,7 @@ function onDeviceReady() {
     				values[field.name] = field.value;
 				});
 				
-				window.plugins.SmXyAddArticlePlugin.add_post(values['title_r'], values['tags_r'],values['article_r'], posturl);
+				window.plugins.SmXyAddArticlePlugin.add_post(values['title_r'], values['tags_r'],values['article_r'], posturl, onSuccess(), onError());
 				return false;
             });
             
