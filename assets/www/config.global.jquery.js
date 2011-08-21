@@ -1,5 +1,5 @@
 $(document).bind("mobileinit", function() {
-	      $.mobile.page.prototype.options.addBackBtn = true;
+	      $.mobile.page.prototype.options.addBackBtn = false;
 	      $.mobile.defaultPageTransition = 'none';
 	      $.mobile.useFastClick  = false;
 });
@@ -7,7 +7,7 @@ var ready = true;
     // JSON url
 var url="http://slashmanx.com/admin/android/getPosts.php";
 var posturl="http://slashmanx.com/admin/android/post.php";
-postsArray = (window.localStorage['postsStorage'] == null ? JSON.parse(window.localStorage['postsStorage']) : null)
+postsArray = (window.localStorage['postsStorage'] === null ? JSON.parse(window.localStorage['postsStorage']) : null)
 if(postsArray==null)
 {
    	var postsArray = [];
@@ -31,7 +31,7 @@ function onDeviceReady() {
 	$('div[id="blogposts"] ul[data-role="listview"] a').die();
 		
 		$('div[id="blogposts"] ul[data-role="listview"] a').live("vclick", function() {  
-    		window.plugins.statusBarNotification.notify("Put your title here", "Put your message here"); 
+    		//window.plugins.statusBarNotification.notify("SmXyApp", "Put your message here"); 
 		}); 
 		
         function onSuccess(data, status)
@@ -63,7 +63,6 @@ function onDeviceReady() {
             });
             
             $('#buttonRefreshList').live("vclick", function() {
-            	alert ("Refresh Called");
             	if(navigator.network.connection.type == Connection.NONE){
 					alert ("No internet conection!");
 					return false;

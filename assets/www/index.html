@@ -20,8 +20,14 @@
 
 	<div data-role="header">
 		<h1>SmXy App</h1>
-		<a id="buttonAddBlogPost" data-icon="plus" class="ui-btn-right" href="#add" data-iconpos="notext" data-role="button" data-inline="true">New</a> 
-		<a id="buttonRefreshList" data-icon="refresh" class="ui-btn-left" data-iconpos="notext" data-role="button" data-inline="true">Refresh</a>
+		<a id="buttonRefreshList" data-icon="refresh" class="ui-btn-right" data-iconpos="notext" data-role="button" data-inline="true">Refresh</a>
+		<div data-role="navbar">
+		<ul>
+			<li><a id="buttonAddBlogPost" data-icon="plus" href="#add" data-iconpos="top">New</a></li>
+			<li><a href="#home" data-icon="grid" data-iconpos="top" class="ui-btn-active ui-state-persist">Manage</a></li>
+			<li><a id="buttonSettings" data-icon="gear" href="#settings" data-iconpos="top">Settings</a></li>
+		</ul>
+	</div><!-- /navbar -->
 	</div><!-- /header -->
 
 	<div id = "blogposts" data-role="content">
@@ -57,6 +63,13 @@
 
 	<div data-role="header" data-nobackbtn = "true" data-add-back-btn="false">
 		<h1>Add Blog Post</h1>
+		<div data-role="navbar">
+			<ul>
+				<li><a id="buttonAddBlogPost" data-icon="plus" href="#add" data-iconpos="top" class="ui-btn-active ui-state-persist">New</a></li>
+				<li><a href="#home" data-icon="grid" data-iconpos="top">Manage</a></li>
+				<li><a id="buttonSettings" data-icon="gear" href="#settings" data-iconpos="top">Settings</a></li>
+			</ul>
+		</div>
 	</div><!-- /header -->
 
 	<div data-role="content">
